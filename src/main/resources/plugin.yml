@@ -1,0 +1,37 @@
+name: HaneServerLobby
+version: ${project.version}
+main: net.serveron.hane.haneserverlobby.HaneServerLobby
+api-version: 1.16
+commands:
+  athle:
+    usage: /athle
+    description: hane server asist plugin
+
+  rulebook:
+    usage: /rulebook
+    description: hane server asist plugin
+
+  discord:
+    usage: /discord
+    description: hane server asist plugin
+
+  protector:
+    usage: /discord
+    description: hane server asist plugin
+
+permissions:
+  athle.*:
+    description: Gives access to all commands
+    default: op
+
+  rulebook.*:
+    description: Gives access to all commands
+    default: op
+
+  discord.*:
+    description: Gives access to all commands
+    default: op
+
+  protector.*:
+    description: Gives access to all commands
+    default: op
