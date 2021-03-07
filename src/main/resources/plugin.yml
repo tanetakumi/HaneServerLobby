@@ -16,7 +16,19 @@ commands:
     description: hane server asist plugin
 
   protector:
-    usage: /discord
+    usage: /protector
+    description: hane server asist plugin
+
+  exchange:
+    usage: /exchange
+    description: hane server asist plugin
+
+  tele:
+    usage: /tele
+    description: hane server asist plugin
+
+  head:
+    usage: /head
     description: hane server asist plugin
 
 permissions:
@@ -33,5 +45,17 @@ permissions:
     default: op
 
   protector.*:
+    description: Gives access to all commands
+    default: op
+
+  exchange.*:
+    description: Gives access to all commands
+    default: op
+
+  tele.*:
+    description: Gives access to all commands
+    default: op
+
+  head.*:
     description: Gives access to all commands
     default: op

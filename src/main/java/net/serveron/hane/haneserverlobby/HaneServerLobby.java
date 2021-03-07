@@ -1,9 +1,6 @@
 package net.serveron.hane.haneserverlobby;
 
-import net.serveron.hane.haneserverlobby.Command.BanCommand;
-import net.serveron.hane.haneserverlobby.Command.GameCommand;
-import net.serveron.hane.haneserverlobby.Command.DiscordCommand;
-import net.serveron.hane.haneserverlobby.Command.RuleBookCommand;
+import net.serveron.hane.haneserverlobby.Command.*;
 import net.serveron.hane.haneserverlobby.Listener.FishEvent;
 import net.serveron.hane.haneserverlobby.Listener.JoinQuitEvent;
 import net.serveron.hane.haneserverlobby.Listener.JumpEvent;
@@ -47,6 +44,9 @@ public final class HaneServerLobby extends JavaPlugin {
         new RuleBookCommand(this);
         new DiscordCommand(this);
         new BanCommand(this);
+        new ExchangeCommand(this);
+        new TeleportCommand(this);
+        new HeadCommand(this);
     }
 
     @Override
