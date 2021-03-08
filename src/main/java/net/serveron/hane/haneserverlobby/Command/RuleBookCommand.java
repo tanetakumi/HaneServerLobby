@@ -1,7 +1,7 @@
 package net.serveron.hane.haneserverlobby.Command;
 
 import net.serveron.hane.haneserverlobby.HaneServerLobby;
-import net.serveron.hane.haneserverlobby.util.BookStructure;
+import net.serveron.hane.haneserverlobby.Config.BookStructure;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;

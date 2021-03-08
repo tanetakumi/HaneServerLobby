@@ -2,7 +2,7 @@ package net.serveron.hane.haneserverlobby.Command;
 
 import net.kyori.adventure.text.Component;
 import net.serveron.hane.haneserverlobby.HaneServerLobby;
-import net.serveron.hane.haneserverlobby.util.MainColor;
+import net.serveron.hane.haneserverlobby.util.ColorSearch;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
@@ -44,7 +44,7 @@ public class ExchangeCommand implements CommandExecutor, TabCompleter {
                         chest.getInventory().clear();
                         ItemStack itemStack = new ItemStack(pay,payNum);
                         ItemMeta itemMeta = itemStack.getItemMeta();
-                        itemMeta.displayName(Component.text(args[4]).color(MainColor.textColor(args[5])));
+                        itemMeta.displayName(Component.text(args[4]).color(ColorSearch.stringToColor(args[5])));
                         itemStack.setItemMeta(itemMeta);
                         chest.getInventory().addItem(itemStack);
                     } else {
@@ -82,7 +82,7 @@ public class ExchangeCommand implements CommandExecutor, TabCompleter {
     }
 
     private List<String> getAllMaterials() {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         for(Material mat : Material.values()) {
             list.add(mat.name().toLowerCase());
         }

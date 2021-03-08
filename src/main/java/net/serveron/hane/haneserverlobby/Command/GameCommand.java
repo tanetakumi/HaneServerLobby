@@ -3,6 +3,7 @@ package net.serveron.hane.haneserverlobby.Command;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.serveron.hane.haneserverlobby.HaneServerLobby;
+import net.serveron.hane.haneserverlobby.util.ColorSearch;
 import net.serveron.hane.haneserverlobby.util.PlayerSearch;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
@@ -26,27 +27,29 @@ public class GameCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         BlockCommandSender cb = (BlockCommandSender) sender;
-        if(args.length == 2){
-            if(args[0].equalsIgnoreCase("start")){
-                plugin.getPlayerGame().onJoinAthletic(PlayerSearch.getNearbyPlayer(cb.getBlock().getLocation()),args[1]);
-            } else if(args[0].equalsIgnoreCase("stop")){
-                plugin.getPlayerGame().onCompleteAthletic(PlayerSearch.getNearbyPlayer(cb.getBlock().getLocation()),args[1]);
-            } else {
-                sender.sendMessage(Component.text("コマンドが違います。"));
-            }
-        } else if(args.length == 1){
-            if(args[0].equalsIgnoreCase("show")){
-                plugin.getPlayerGame().showPlayerData(PlayerSearch.getNearbyPlayer(cb.getBlock().getLocation()));
-            } else if(args[0].equalsIgnoreCase("save")){
-                Player player = PlayerSearch.getNearbyPlayer(cb.getBlock().getLocation());
-                if(plugin.getPlayerGame().savePlayerData(player)){
-                    player.sendMessage(Component.text("データがセーブされました。").color(TextColor.color(0x00ffff)));
+        Player player = PlayerSearch.getNearbyPlayer(cb.getBlock().getLocation());
+        if(player != null){
+            if(args.length == 2){
+                if(args[0].equalsIgnoreCase("start")){
+                    plugin.getPlayerGame().onJoinAthletic(player,args[1]);
+                } else if(args[0].equalsIgnoreCase("stop")){
+                    plugin.getPlayerGame().onCompleteAthletic(player,args[1]);
                 } else {
-                    player.sendMessage(Component.text("データがセーブできませんでした。\n運営にお問い合わせください。").color(TextColor.color(0xff0000)));
+                    sender.sendMessage(Component.text("コマンドが違います。"));
                 }
+            } else if(args.length == 1){
+                if(args[0].equalsIgnoreCase("show")){
+                    plugin.getPlayerGame().showPlayerData(player);
+                } else if(args[0].equalsIgnoreCase("save")){
+                    if(plugin.getPlayerGame().savePlayerData(player)){
+                        player.sendMessage(Component.text("データがセーブされました。").color(ColorSearch.Aqua));
+                    } else {
+                        player.sendMessage(Component.text("データがセーブできませんでした。\n運営にお問い合わせください。").color(ColorSearch.Red));
+                    }
+                }
+            } else {
+                sender.sendMessage(Component.text("引数が違います。"));
             }
-        } else {
-            sender.sendMessage(Component.text("引数が違います。"));
         }
 
         return true;

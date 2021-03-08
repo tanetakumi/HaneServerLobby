@@ -16,7 +16,7 @@ public class SQLite {
     private PreparedStatement stmtForDelete;
     private PreparedStatement stmtForGetAt;
     private PreparedStatement stmtForSetAt;
-    //private PreparedStatement stmtForDeleteAt;
+
     public SQLite(HaneServerLobby plugin,String dbname){
 
         File dataFolder = new File(plugin.getDataFolder(), dbname+".db");

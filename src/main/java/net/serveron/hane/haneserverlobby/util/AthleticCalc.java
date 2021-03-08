@@ -12,11 +12,13 @@ public class AthleticCalc {
         private final String playerName;
         private final int startTime;
         private final String athleticName;
+
         public StopWatch(String playerName, String athleticName){
             this.playerName = playerName;
             this.startTime = (int)System.currentTimeMillis()/1000;
             this.athleticName = athleticName;
         }
+
         public String getPlayerName(){
             return playerName;
         }
@@ -30,13 +32,9 @@ public class AthleticCalc {
         }
     }
 
-    private final List<StopWatch> calcList = new ArrayList<>();
-    public AthleticCalc(){
+    private static final List<StopWatch> calcList = new ArrayList<>();
 
-    }
-
-
-    public void playerStart(Player player,String athleticName){
+    public static void playerStart(Player player,String athleticName){
         for(StopWatch stopWatch: calcList){
             if(stopWatch.getPlayerName().equals(player.getName())){
                 calcList.remove(stopWatch);
@@ -46,7 +44,7 @@ public class AthleticCalc {
         calcList.add(new StopWatch(player.getName(),athleticName));
     }
 
-    public int getPlayerTime(Player player,String athleticName){
+    public static int getPlayerTime(Player player,String athleticName){
         int finishTime = (int)System.currentTimeMillis()/1000;
 
         for(StopWatch stopWatch: calcList){

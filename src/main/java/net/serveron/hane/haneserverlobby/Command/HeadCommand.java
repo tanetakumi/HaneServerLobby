@@ -1,19 +1,9 @@
 package net.serveron.hane.haneserverlobby.Command;
 
-import net.kyori.adventure.text.Component;
 import net.serveron.hane.haneserverlobby.HaneServerLobby;
-import net.serveron.hane.haneserverlobby.util.MainColor;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.Chest;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class HeadCommand implements CommandExecutor{
     private final HaneServerLobby plugin;

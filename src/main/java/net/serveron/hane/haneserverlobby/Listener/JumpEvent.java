@@ -2,19 +2,13 @@ package net.serveron.hane.haneserverlobby.Listener;
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import net.serveron.hane.haneserverlobby.HaneServerLobby;
-import net.serveron.hane.haneserverlobby.util.PlayerData;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.block.Chest;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
-import org.bukkit.inventory.ItemStack;
 
-import java.util.Arrays;
 
 public class JumpEvent implements Listener {
 
