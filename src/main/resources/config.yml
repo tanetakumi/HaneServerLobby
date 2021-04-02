@@ -1,22 +1,6 @@
+confirm: false
 
 discordwebhook:
-
-firstspawn:
-  x: 0.5
-  y: 46
-  z: 0.5
-  yaw: 90
-  pitch: 0
-
-prespawn:
-  x: 67.5
-  y: 50
-  z: 94.5
-  yaw: -90
-  pitch: 0
-
-jumppoint:
-  - x:
 
 rulebook:
   title: ルールブック

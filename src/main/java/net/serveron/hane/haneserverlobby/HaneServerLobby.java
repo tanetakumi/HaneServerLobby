@@ -25,36 +25,57 @@ public final class HaneServerLobby extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-
-        hsConfig = new HaneServerLobbyConfig(this);
-        sqLite = new SQLite(this,"haneserver");
-        if(!sqLite.openConnection()){
-            System.out.println("コネクションエラー！！");
+        try{
+            hsConfig = new HaneServerLobbyConfig(this);
+        } catch (Exception e){
+            System.out.println("[HaneServerLobby] Config Error");
+            e.printStackTrace();
             setEnabled(false);
         }
 
-        threadPool = Executors.newFixedThreadPool(3);
-        playerGame = new PlayerGame(this);
+        if(!hsConfig.isConfirm()){
+            System.out.println("[HaneServerLobby] ここはLobbyサーバーですか？確認が必要です。");
+            setEnabled(false);
+        }
 
-        new JoinQuitEvent(this);
-        new JumpEvent(this);
-        new FishEvent(this);
-        new SitEvent(this);
+        sqLite = new SQLite(this,"haneserver");
+        if(!sqLite.openConnection()){
+            System.out.println("[HaneServerLobby] SQLite Error");
+            setEnabled(false);
+        }
 
-        new GameCommand(this);
-        new RuleBookCommand(this);
-        new DiscordCommand(this);
-        new BanCommand(this);
-        new ExchangeCommand(this);
-        new TeleportCommand(this);
-        new HeadCommand(this);
+
+        if(isEnabled()){
+
+
+            threadPool = Executors.newFixedThreadPool(3);
+            playerGame = new PlayerGame(this);
+
+            new JoinQuitEvent(this);
+            new JumpEvent(this);
+            new FishEvent(this);
+            new SitEvent(this);
+
+            new GameCommand(this);
+            new RuleBookCommand(this);
+            new DiscordCommand(this);
+            new BanCommand(this);
+            new TeleportCommand(this);
+            new HeadCommand(this);
+        }
+
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        threadPool.shutdown();
-        sqLite.closeDisconnect();
+        if(threadPool!=null){
+            threadPool.shutdown();
+        }
+
+        if(!hsConfig.isConfirm() && sqLite!=null){
+            sqLite.closeDisconnect();
+        }
         HandlerList.unregisterAll(this);
     }
 

@@ -127,9 +127,6 @@ public class SQLite {
                 playerData = new PlayerData(uuid, name, At1,At2,At3,At4,pvp_win,pvp_lose,fishing);
 
             }
-            while (rs.next()){
-                System.out.println("now");
-            }
             rs.close();
             System.out.println("[HaneServerLobby] "+uuid+"のデータを読み込みました。");
             return playerData;
@@ -141,7 +138,7 @@ public class SQLite {
     }
 
     public boolean setPlayerData(PlayerData playerData){
-        System.out.println("kokodayo"+playerData.getAt3());
+        //System.out.println("kokodayo"+playerData.getAt3());
         try{
             stmtForSet.clearParameters();
             stmtForSet.setString(1,playerData.getUuid());

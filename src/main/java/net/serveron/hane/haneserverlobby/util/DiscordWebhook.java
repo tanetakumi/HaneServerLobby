@@ -18,7 +18,7 @@ public class DiscordWebhook implements Runnable{
         try{
             execute();
         } catch (IOException e){
-            System.out.print(e.getMessage());
+            e.printStackTrace();
         }
     }
 

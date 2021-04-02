@@ -11,15 +11,11 @@ public class HaneServerLobbyConfig {
     private final HaneServerLobby plugin;
     private FileConfiguration config;
 
+    private boolean confirm;
+
     private String discordWebhook;
 
     private BookStructure rulebook;
-
-    private LocationStructure firstSpawn;
-
-    private LocationStructure preSpawn;
-
-    private List<LocationStructure> jumpLocations;
 
     public HaneServerLobbyConfig(HaneServerLobby plugin) {
         this.plugin = plugin;
@@ -35,6 +31,8 @@ public class HaneServerLobbyConfig {
         }
         config = plugin.getConfig();
 
+        confirm = config.getBoolean("confirm");
+
         discordWebhook = config.getString("discordwebhook");
 
         String title = config.getString("rulebook.title");
@@ -42,29 +40,15 @@ public class HaneServerLobbyConfig {
         List<String> pages = config.getStringList("rulebook.pages");
         rulebook = new BookStructure(title, author, pages);
 
-        firstSpawn = new LocationStructure(config.getDouble("firstspawn.x"),config.getDouble("firstspawn.y")
-                ,config.getDouble("firstspawn.z"),config.getDouble("firstspawn.yaw"),config.getDouble("firstspawn.pitch"));
-
-        preSpawn = new LocationStructure(config.getDouble("prespawn.x"),config.getDouble("prespawn.y")
-                ,config.getDouble("prespawn.z"),config.getDouble("prespawn.yaw"),config.getDouble("prespawn.pitch"));
-
-
-
     }
+
+    public boolean isConfirm() { return confirm; }
 
     public BookStructure getRulebook(){
         return rulebook;
     }
 
     public String getDiscordWebhook() { return discordWebhook; }
-
-    public LocationStructure getFirstSpawn() {
-        return firstSpawn;
-    }
-
-    public LocationStructure getPreSpawn() {
-        return preSpawn;
-    }
 
     public void setRulebook(BookStructure rulebook){
         this.rulebook = rulebook;

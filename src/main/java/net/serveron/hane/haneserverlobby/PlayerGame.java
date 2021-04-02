@@ -7,8 +7,6 @@ import net.serveron.hane.haneserverlobby.util.AthleticCalc;
 import net.serveron.hane.haneserverlobby.util.AthleticData;
 import net.serveron.hane.haneserverlobby.util.PlayerData;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -67,7 +65,7 @@ public class PlayerGame {
                         update = true;
                     }
                 } else if(athleticName.equals("at3")){
-                    System.out.println("fdsfsdf");
+                    //System.out.println("fdsfsdf");
                     if(time<playerData.getAt3()){
                         playerData.updataAt3(time);
                         update = true;

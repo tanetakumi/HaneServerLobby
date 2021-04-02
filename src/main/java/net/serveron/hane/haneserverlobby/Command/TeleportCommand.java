@@ -4,6 +4,7 @@ import net.serveron.hane.haneserverlobby.HaneServerLobby;
 import net.serveron.hane.haneserverlobby.util.PlayerSearch;
 import org.bukkit.Material;
 import org.bukkit.command.*;
+import org.bukkit.entity.Player;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -26,21 +27,23 @@ public class TeleportCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         BlockCommandSender cb = (BlockCommandSender) sender;
-
-        if(args.length == 1){
-            try{
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                DataOutputStream dos = new DataOutputStream(baos);
-                dos.writeUTF("Connect");
-                dos.writeUTF(args[0]);
-                PlayerSearch.getNearbyPlayer(cb.getBlock().getLocation()).sendPluginMessage(plugin, "BungeeCord", baos.toByteArray());
-                baos.close();
-                dos.close();
-            } catch (Exception e){
-                e.printStackTrace();
+        Player player = PlayerSearch.getNearbyPlayer(cb.getBlock().getLocation());
+        if(player!=null){
+            if(args.length == 1) {
+                try {
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    DataOutputStream dos = new DataOutputStream(baos);
+                    dos.writeUTF("Connect");
+                    dos.writeUTF(args[0]);
+                    player.sendPluginMessage(plugin, "BungeeCord", baos.toByteArray());
+                    baos.close();
+                    dos.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Console　引数指定エラー");
             }
-        } else {
-            System.out.println("Console　引数指定エラー");
         }
         return true;
     }
