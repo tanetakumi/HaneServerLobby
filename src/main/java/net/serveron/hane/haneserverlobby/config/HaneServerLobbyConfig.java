@@ -1,7 +1,6 @@
-package net.serveron.hane.haneserverlobby.Config;
+package net.serveron.hane.haneserverlobby.config;
 
 import net.serveron.hane.haneserverlobby.HaneServerLobby;
-import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.List;
@@ -12,8 +11,6 @@ public class HaneServerLobbyConfig {
     private FileConfiguration config;
 
     private boolean confirm;
-
-    private String discordWebhook;
 
     private BookStructure rulebook;
 
@@ -31,9 +28,7 @@ public class HaneServerLobbyConfig {
         }
         config = plugin.getConfig();
 
-        confirm = config.getBoolean("confirm");
-
-        discordWebhook = config.getString("discordwebhook");
+        confirm = config.getBoolean("lobby");
 
         String title = config.getString("rulebook.title");
         String author = config.getString("rulebook.author");
@@ -47,8 +42,6 @@ public class HaneServerLobbyConfig {
     public BookStructure getRulebook(){
         return rulebook;
     }
-
-    public String getDiscordWebhook() { return discordWebhook; }
 
     public void setRulebook(BookStructure rulebook){
         this.rulebook = rulebook;

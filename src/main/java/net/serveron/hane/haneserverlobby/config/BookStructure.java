@@ -1,4 +1,4 @@
-package net.serveron.hane.haneserverlobby.Config;
+package net.serveron.hane.haneserverlobby.config;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;

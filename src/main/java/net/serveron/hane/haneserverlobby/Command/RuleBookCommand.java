@@ -1,7 +1,7 @@
 package net.serveron.hane.haneserverlobby.Command;
 
 import net.serveron.hane.haneserverlobby.HaneServerLobby;
-import net.serveron.hane.haneserverlobby.Config.BookStructure;
+import net.serveron.hane.haneserverlobby.config.BookStructure;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -70,13 +70,4 @@ public class RuleBookCommand implements CommandExecutor, TabCompleter {
         return autoComplete;
     }
 
-    private int stringToInt(String str){
-        int x = -1;
-        try{
-            x = Integer.parseInt(str);
-        }
-        catch(Exception ignored){
-        }
-        return x;
-    }
 }

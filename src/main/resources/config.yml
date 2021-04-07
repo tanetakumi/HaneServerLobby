@@ -1,6 +1,4 @@
-confirm: false
-
-discordwebhook:
+lobby: false
 
 rulebook:
   title: ルールブック
